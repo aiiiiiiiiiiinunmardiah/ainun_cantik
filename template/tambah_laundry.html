@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="navbar">
+        LaundryApp  
+        <div class="nav-links">
+            <a href="/register">Daftar</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <div class="form-container">
+
+        <h2 style="margin-bottom: 20px;">Tambah Data Laundry</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="input-group">
+                <label>Nama Pelanggan</label>
+                <input type="text" name="nama">
+            </div>
+
+            <div class="input-group">
+                <label>Jenis Pakaian</label>
+                <input type="text" name="jenis">
+            </div>
+
+            <div class="input-group">
+                <label>Berat (kg)</label>
+                <input type="number" name="berat" step="0.1" id="berat">
+            </div>
+
+            <div class="input-group">
+                <label>Harga</label>
+                <input type="number" name="harga" id="harga">
+            </div>
+
+            <div class="input-group">
+                <label>Status</label>
+                <select name="status">
+                    <option>proses</option>
+                    <option>selesai</option>
+                </select>
+            </div>
+
+            <button class="save-btn">Simpan</button>
+        </form>
+
+    </div>
+</body>
+<script src="{% static 'js/javas.js '%}"></script>
+</html>

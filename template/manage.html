@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar User</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+        h2{
+            text-align:center;
+        }
+
+        .btn-kembali{
+            display: inline-block;
+            margin-left: 20px;
+            margin-bottom: 15px;
+            padding: 8px 14px;
+            background: #444;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .btn-kembali:hover{
+            background: #222;
+        }
+
+        table{
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+        }
+        th, td{
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th{
+            background: #4CAF50;
+            color: white;
+        }
+        tr:hover{
+            background: #f2f2f2;
+        }
+        .btn-admin{
+            padding: 6px 12px;
+            background: #007bff;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .btn-admin:hover{
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<a href="/daftar_laundry_super/" class="btn-kembali">← Kembali</a>
+
+<h2>Daftar User</h2>
+
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Aksi</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        {% if not user.is_staff and not user.is_superuser %}
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        {% endif %}
+        <td>
+            <a class="btn-admin" href="/jadikan_admin/{{ user.id }}/">Jadikan Admin</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

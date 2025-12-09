@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Daftar Laundry</title>
+</head>
+<body>
+
+    <div class="navbar">
+        LaundryApp
+        <div class="nav-links">
+            <a href="/tambah/laundry">+ Tambah Laundry</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <h2>Daftar Laundry</h2>
+
+    <h2>Daftar Laundry (Super Admin)</h2>
+
+    <a href="/tambah/laundry">+ Tambah Laundry</a>
+
+    <table>
+        <tr>
+            <th>Pelanggan</th>
+            <th>Jenis</th>
+            <th>Berat</th>
+            <th>Harga</th>
+            <th>Status</th>
+            <th>Aksi</th>
+        </tr>
+
+        {% for item in data %}
+        <tr>
+            <td>{{ item.nama }}</td>
+            <td>{{ item.jenis }}</td>
+            <td>{{ item.berat }}</td>
+            <td>{{ item.harga }}</td>
+            <td>{{ item.status }}</td>
+            <td>
+                <a href="/edit/{{ item.id }}/">Edit</a> |
+                <a href="/hapus/{{ item.id }}/">Hapus</a>|
+                <a href="/manage/">Manage User</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    </div>
+
+</body>
+</html>
